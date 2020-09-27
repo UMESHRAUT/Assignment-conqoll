@@ -2,6 +2,9 @@ import React from 'react'
 import { AutoSizer, List } from 'react-virtualized';
 import { useDispatch, useSelector } from 'react-redux';
 import {  deleteFromShortList} from '../../redux/actions';
+import SearchIcon from '@material-ui/icons/Search';
+import { IconButton } from '@material-ui/core';
+import RemoveCircleIcon from '@material-ui/icons/RemoveCircle';
 
 function ShortLists() {
 
@@ -11,13 +14,20 @@ function ShortLists() {
     
     
         return (
+            data.length<1?<div className="no_data">
+                <div>
+                    <SearchIcon/>
+                    <p>you have nothing in shortlist</p>
+                </div>
+            </div>:
             <div>
                 <div className="filter">
                     <div className="chart">
-                        <span>State</span>
-                        <span>District</span>
-                        <span>City</span>
-                        <span>Action</span>
+                        <label>State</label>
+                        <label>District</label>
+                        <label>City</label>
+                        <label>Action</label>
+
                     </div>
                 </div>
         <div style={{width:"100vw", height:"90vh", outline:"none"}} className="container">
@@ -37,7 +47,9 @@ function ShortLists() {
                            <div>{d?.State}</div>
                             <div>{d?.District}</div>
                             <div>{d?.City}</div>
-                        <div><button onClick={()=>dispatch(deleteFromShortList(d,index))} >delete</button> </div>
+                            
+                        <div><IconButton><RemoveCircleIcon onClick={()=>dispatch(deleteFromShortList(d,index))}/>
+                        </IconButton></div>
                     
                     </div>
                 }} />)}

@@ -20,8 +20,9 @@ function App() {
       <BrowserRouter>
       <Navbar/>
       <Switch>
-        <Route path="/shortlists" component={ShortLists}/>
-        <Route path="/" component={AllItems}/>
+        <Route exact={true} path="/" component={AllItems}/>
+        <Route exact={true} path="/shortlists" component={ShortLists}/>
+
       </Switch>
       </BrowserRouter>
     </div>

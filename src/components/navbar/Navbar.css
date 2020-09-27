@@ -11,8 +11,32 @@
     color: #64d983;
 }
 
+a{
+    width: 10rem;
+    border-top-left-radius: .5rem;
+    border-top-right-radius: .5rem;
+    padding: .5rem 1rem;
+}
+a:hover{
+    background: rgb(185, 213, 255);
+}
+a.active{
+    width: 10rem;
+    background: white;
+    color: #64d983;
+}
 .link{
     /* background: red; */
-    margin: 2rem;
+    margin: 0 2rem;
     font-size: larger;
+    height: 100%;
+    width: 100%;
+}
+
+.super{
+    background: yellow;
+    border-radius: 50%;
+    color: black;
+    padding: .2rem;
+    margin: .2rem;
 }

@@ -1,11 +1,3 @@
-/* .header{
-    display: flex;
-    padding: 1rem;
-    justify-content:flex-start;
-    align-items: center;
-    background: white;
-    box-shadow: 0 8px 5px -5px rgb(187, 187, 187);
-} */
 .container{
     width: 90%;
     margin: auto;
@@ -32,6 +24,7 @@
     margin: 10rem;
 }
 label{
+    margin-right: 1rem;
     font-size: large;
     font-weight: 800;
 }
@@ -49,19 +42,19 @@ label{
     display: flex;
     justify-content: space-between;
     padding: 1rem 5vw;
-    border-top: 1px solid green;
+    border-top: 1px solid rgb(230, 230, 230);
     outline: none;
     align-items: center;
     transition: all .3s;
 }
 .item:last-child{
-    border-bottom: 1px solid green;
+    border-bottom: 1px solid rgb(206, 206, 206);
 }
 .item:hover{
-    background: #64d983;;
+    background: #e2e2e2;;
 }
 .item>div{
-    padding-left: 2rem;
+    padding-left: 4rem;
     height: 100%;
     width: 80%;
     display: flex;
@@ -78,4 +71,20 @@ label{
 
 .sort{
     font-size: large;
+    width: 10rem;
+}
+
+.action>.MuiButtonBase-root>.MuiIconButton-root>.MuiSvgIcon-root{
+    font-size: larger;
+    margin: 0 2rem;
+    /* padding: 1rem; */
+}
+.action>.MuiSvgIcon-root:hover{
+    position: relative;
+    font-size: x-large;
+}
+
+.clearFilter{
+    position: absolute;
+    /* right:10rem; */
 }

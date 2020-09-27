@@ -4,7 +4,10 @@ import { AutoSizer, List } from 'react-virtualized';
 import { useDispatch, useSelector } from 'react-redux';
 import { shortList, getList} from '../../redux/actions';
 import { LIST_DELETE } from '../../redux/constants';
-
+import AddIcon from '@material-ui/icons/Add';
+import { Icon, IconButton } from '@material-ui/core';
+import RemoveCircleIcon from '@material-ui/icons/RemoveCircle';
+import ClearIcon from '@material-ui/icons/Clear';
 function AllItems() {
     const listData = useSelector(state => state.listData);
     const {loading,data,error}=listData;
@@ -18,9 +21,12 @@ function AllItems() {
 
     const handleChnage=async(e)=>{
         const{name,value}=e.target;
-        await SetSortBy(prev=>{
+        SetSortBy(prev=>{
             return {...prev,[name]:value}
         })
+        if(value==""){
+            dispatch(getList(sortBy))
+        }
     }       
 
     useEffect(() => {
@@ -35,7 +41,6 @@ function AllItems() {
     const handleShortList=(d,index)=>{
             dispatch(shortList(d,index))
             dispatch(getList(sortBy));
-
     }
     return (
         <div>
@@ -44,7 +49,7 @@ function AllItems() {
 
             <div className="chart">
             <div>
-                <label>State</label>
+                <label>State:</label>
             <select value={sortBy.State} name="State" onChange={handleChnage} className="sort"> 
             {sortBy.State===""&&<option value="">Select</option>}       
         {[...new Map(data?.map(item =>[item['State'], item]))
@@ -54,7 +59,7 @@ function AllItems() {
             </select>
             </div>
             <div>
-                <label>District</label>
+                <label>District:</label>
                 <select value={sortBy.District} name="District" onChange={handleChnage} className="sort">  
                 {sortBy.District===""&&<option value="">Select</option>}       
         {[...new Map(data?.map(item =>[item['District'], item])).values()]
@@ -64,13 +69,17 @@ function AllItems() {
             </select>
             </div>
             <div>
-                <label>city</label>
-            <input type="text" value={sortBy.City} onChange={handleChnage} name="City" className="sort"/>
+                <label>city:</label>
+            <input type="text" value={sortBy.City} onChange={handleChnage} name="City" className="sort" placeholder="search for.."/>
             </div>
             <div>
-                Actions
+                Shortlist / Remove
             </div>
             </div>
+                <span>clear all</span>
+                <IconButton>
+                <ClearIcon  onClick={()=>SetSortBy({State:"",District:"",City:""})}/>
+                </IconButton>
             </div>
         <div style={{width:"100vw", height:"90vh", outline:"none"}} className="container">
             {loading&&<div>Loading..</div>}
@@ -89,13 +98,19 @@ function AllItems() {
                        <div>{d?.State}</div>
                         <div>{d?.District}</div>
                         <div>{d?.City}</div>
-                    <div><button onClick={()=>handleShortList(d,index)}>shortlist</button> <button onClick={()=>dispatch({type:LIST_DELETE,payload:index})} >Delete</button> </div>
+                    <div>
+                        <IconButton>
+                        <AddIcon onClick={()=>handleShortList(d,index)}/>
+                        </IconButton>
+                        <IconButton>
+                            <RemoveCircleIcon onClick={()=>{dispatch({type:LIST_DELETE,payload:d});dispatch(getList(sortBy))} }/>
+                        </IconButton></div>
                 
                 </div>
             }} />)}
             </AutoSizer>}
         </div>
-
+    
         </div>
     )
 }
