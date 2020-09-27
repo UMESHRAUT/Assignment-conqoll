@@ -1,5 +1,5 @@
 import Axios from "axios"
-import { ADD_TO_LIST, ADD_TO_SHORT_LIST, DELETE_FROM_SHORT_LIST, LIST_DELETE, LIST_GET_API_FAIL, LIST_GET_API_REQUEST, LIST_GET_API_SUCESS, LIST_GET_FAIL, LIST_GET_REQUEST, LIST_GET_SUCESS, SHORT_LIST_FAIL, SHORT_LIST_REQUEST, SHORT_LIST_SUCESS } from "./constants"
+import { ADD_TO_LIST, ADD_TO_SHORT_LIST, DELETE_FROM_SHORT_LIST, LIST_DELETE, LIST_GET_API_FAIL,LIST_GET_API_SUCESS, LIST_GET_FAIL, LIST_GET_REQUEST, LIST_GET_SUCESS, SHORT_LIST_FAIL} from "./constants"
 
 export const getList=({State,District,City})=>async(dispatch,getState)=>{
     const data=getState();
@@ -19,9 +19,7 @@ export const getList=({State,District,City})=>async(dispatch,getState)=>{
 export const availableList=()=>async(dispatch)=>{
     try {
         const list=await Axios("https://api.jsonbin.io/b/5f6f36127243cd7e824413e1")
-        console.log("fetching from web");
-        console.log("fetching from web");
-        console.log("fetching from web");
+
         dispatch({type:LIST_GET_API_SUCESS,payload:list.data})
         dispatch({type:LIST_GET_SUCESS,payload:list.data})  
     } catch (error) {
@@ -31,7 +29,6 @@ export const availableList=()=>async(dispatch)=>{
 
 export const deleteFromShortList=(data,key)=>async(dispatch)=>{
     try {
-        console.log(key);
         dispatch({type:ADD_TO_LIST,payload:data})
         dispatch({type:DELETE_FROM_SHORT_LIST,payload:key})
     } catch (error) {
@@ -41,7 +38,6 @@ export const deleteFromShortList=(data,key)=>async(dispatch)=>{
 
 export const shortList=(data,key)=>async(dispatch)=>{
     try {
-        console.log(data);
         dispatch({type:ADD_TO_SHORT_LIST,payload:data})
         dispatch({type:LIST_DELETE,payload:data})
     } catch (error) {

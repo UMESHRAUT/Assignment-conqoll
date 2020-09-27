@@ -22,8 +22,6 @@ function permanentListReducer(state={data:[]},action){
         case LIST_GET_API_FAIL:
                 return {loading:false,error:action.payload}
         case ADD_TO_LIST:
-            console.log(state.data);
-            console.log(action.payload);
             return {data:[action.payload,...state.data]}
         case LIST_DELETE:
             return {data:[...state.data.filter(d=>d.City!==action.payload.City)]}

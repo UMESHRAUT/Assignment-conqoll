@@ -18,17 +18,18 @@ function AllItems() {
 
     const handleChnage=async(e)=>{
         const{name,value}=e.target;
-        const c=await SetSortBy(prev=>{
+        await SetSortBy(prev=>{
             return {...prev,[name]:value}
         })
     }       
 
     useEffect(() => {
+        
         dispatch(getList(sortBy))
         return () => {
             // cleanup
         }
-    }, [sortBy])
+    }, [sortBy,dispatch])
 
 
     const handleShortList=(d,index)=>{

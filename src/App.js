@@ -10,13 +10,11 @@ import { availableList } from './redux/actions';
 function App() {
   const dispatch = useDispatch()
   useEffect(() => { 
-    console.log("mounting");  
     dispatch(availableList());
-    // console.log(data);
     return () => {
         // cleanup
     }
-}, [])
+})
   return (
     <div className="App">
       <BrowserRouter>
