@@ -114,7 +114,7 @@ function AllItems() {
             </div>
             </div>
             <div className="buttons">
-                <span>clear all</span>
+                <span>{editmode?"Close":"clear all"}</span>
                 <div onClick={setStateToDefault}>
                 <IconButton>
                 <ClearIcon  />
