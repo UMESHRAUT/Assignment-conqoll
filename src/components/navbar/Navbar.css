@@ -1,0 +1,18 @@
+.navbar{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background: #51a4fb;
+    
+}
+.brand{
+    font-size: xx-large;
+    font-weight: 800;
+    color: #64d983;
+}
+
+.link{
+    /* background: red; */
+    margin: 2rem;
+    font-size: larger;
+}

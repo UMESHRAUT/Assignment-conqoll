@@ -1,0 +1,81 @@
+/* .header{
+    display: flex;
+    padding: 1rem;
+    justify-content:flex-start;
+    align-items: center;
+    background: white;
+    box-shadow: 0 8px 5px -5px rgb(187, 187, 187);
+} */
+.container{
+    width: 90%;
+    margin: auto;
+    outline: none;
+}
+.filter{
+    display: flex;
+    justify-content:flex-start;
+    align-items: center;
+    width: 100vw;
+    background: rgb(255, 255, 255);
+    height: 3rem;
+    box-shadow: 0 8px 5px -5px rgb(187, 187, 187);
+}
+.clicked{
+    background: black;
+}
+.chart{
+    display: flex;
+    background: rgb(255, 255, 255);
+    width: 70%;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10rem;
+}
+label{
+    font-size: large;
+    font-weight: 800;
+}
+.chart>div{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.label{
+    position: absolute;
+    left: 2rem;
+}
+.item{
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem 5vw;
+    border-top: 1px solid green;
+    outline: none;
+    align-items: center;
+    transition: all .3s;
+}
+.item:last-child{
+    border-bottom: 1px solid green;
+}
+.item:hover{
+    background: #64d983;;
+}
+.item>div{
+    padding-left: 2rem;
+    height: 100%;
+    width: 80%;
+    display: flex;
+    justify-content: flex-start;
+    transition: all .3s;
+}
+
+.item>div>button{
+    padding: .5rem;
+    display: flex;
+    align-items: center;
+    /* margin: 1rem; */
+}
+
+.sort{
+    font-size: large;
+}
