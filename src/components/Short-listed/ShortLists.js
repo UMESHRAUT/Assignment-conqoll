@@ -48,7 +48,8 @@ function ShortLists() {
                             <div>{d?.District}</div>
                             <div>{d?.City}</div>
                             
-                        <div><IconButton><RemoveCircleIcon onClick={()=>dispatch(deleteFromShortList(d,index))}/>
+                        <div><IconButton onClick={()=>dispatch(deleteFromShortList(d,index))}>
+                            <RemoveCircleIcon />
                         </IconButton></div>
                     
                     </div>
